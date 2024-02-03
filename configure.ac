@@ -4662,6 +4662,11 @@ int main(void) {
 [ac_cv_posix_semaphores_enabled=no],
 [ac_cv_posix_semaphores_enabled=yes])
 )
+case $ac_sys_system in
+  Linux*)
+    # assume enabled, see https://launchpad.net/bugs/630511
+    ac_cv_posix_semaphores_enabled=yes
+esac
 AC_MSG_RESULT($ac_cv_posix_semaphores_enabled)
 if test $ac_cv_posix_semaphores_enabled = no
 then
@@ -4698,6 +4703,11 @@ int main(void){
 [ac_cv_broken_sem_getvalue=yes],
 [ac_cv_broken_sem_getvalue=yes])
 )
+case $ac_sys_system in
+  Linux*)
+    # assume enabled, see https://launchpad.net/bugs/630511
+    ac_cv_broken_sem_getvalue=no
+esac
 AC_MSG_RESULT($ac_cv_broken_sem_getvalue)
 if test $ac_cv_broken_sem_getvalue = yes
 then
